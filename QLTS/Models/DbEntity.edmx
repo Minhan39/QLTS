@@ -1,0 +1,738 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLTS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="BarCode" Type="varchar" MaxLength="20" />
+          <Property Name="AtImport" Type="date" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="UnitId" Type="int" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="Uses" Type="nvarchar(max)" />
+          <Property Name="AtBuy" Type="date" />
+          <Property Name="AtUsing" Type="date" />
+          <Property Name="AtStopUsing" Type="date" />
+          <Property Name="AtLiquidation" Type="date" />
+          <Property Name="Number" Type="varchar" MaxLength="4" />
+          <Property Name="Serial" Type="varchar" MaxLength="15" />
+          <Property Name="Part" Type="varchar" MaxLength="15" />
+          <Property Name="Model" Type="varchar" MaxLength="15" />
+          <Property Name="LicensePlate" Type="varchar" MaxLength="15" />
+          <Property Name="Wattage" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="WMax" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="WMin" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Weight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SpecificGravity" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Length" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Width" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Height" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Radius" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Perimeter" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Area" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="NoteSpecification" Type="nvarchar(max)" />
+          <Property Name="Maintenance" Type="int" />
+          <Property Name="Accreditation" Type="int" />
+          <Property Name="Inventory" Type="int" />
+          <Property Name="Insurance" Type="int" />
+          <Property Name="Fuel" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Diesel" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Tire" Type="int" />
+          <Property Name="Battery" Type="int" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+          <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="AssetAllocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetId" Type="int" Nullable="false" />
+          <Property Name="RoomId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="UnitId" Type="int" />
+          <Property Name="AtAllocation" Type="date" />
+          <Property Name="AtEndAllocation" Type="date" />
+          <Property Name="AtScheduledEndAllocation" Type="date" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="DeviceErrorReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetId" Type="int" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="HandlerId" Type="int" />
+          <Property Name="AtReport" Type="date" />
+          <Property Name="AtReciver" Type="date" />
+          <Property Name="AtHandler" Type="date" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="ManagementAssignment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManagerId" Type="int" Nullable="false" />
+          <Property Name="RoomId" Type="int" Nullable="false" />
+          <Property Name="AtAssignment" Type="date" />
+          <Property Name="AtEndAssignment" Type="date" />
+          <Property Name="AtScheduledEndAssignment" Type="date" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Traders" Type="nvarchar" MaxLength="50" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SupplierAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="SupplierPhone" Type="varchar" MaxLength="12" />
+          <Property Name="SupplierFax" Type="varchar" MaxLength="12" />
+          <Property Name="SupplierMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="AtRepair" Type="date" />
+          <Property Name="RepairTime" Type="int" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+          <Property Name="AssetId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TotalValue" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="NumbersOfNewAsset" Type="int" />
+          <Property Name="NumbersOfLiquidation" Type="int" />
+          <Property Name="NumbersOfStopUsing" Type="int" />
+          <Property Name="NumbersOfAsset" Type="int" />
+          <Property Name="TotalNewAsset" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TotalLiquidation" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TotalStopUsing" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TotalRepair" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Floor" Type="int" />
+          <Property Name="AreaId" Type="int" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Position" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupI" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxCode" Type="varchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" />
+          <Property Name="Fax" Type="varchar" MaxLength="12" />
+          <Property Name="LinkWebsite" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ward" Type="nvarchar" MaxLength="50" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="BusinessRegistrationCode" Type="varchar" MaxLength="15" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="AtCreate" Type="date" />
+          <Property Name="AtUpdate" Type="date" />
+        </EntityType>
+        <EntityContainer Name="QLTS_DBModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset" EntityType="Self.Asset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssetAllocation" EntityType="Self.AssetAllocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceErrorReport" EntityType="Self.DeviceErrorReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManagementAssignment" EntityType="Self.ManagementAssignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repair" EntityType="Self.Repair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLTS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="AssetAllocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetId" Type="Int32" Nullable="false" />
+          <Property Name="RoomId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="AtAllocation" Type="DateTime" Precision="0" />
+          <Property Name="AtEndAllocation" Type="DateTime" Precision="0" />
+          <Property Name="AtScheduledEndAllocation" Type="DateTime" Precision="0" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ManagementAssignment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManagerId" Type="Int32" Nullable="false" />
+          <Property Name="RoomId" Type="Int32" Nullable="false" />
+          <Property Name="AtAssignment" Type="DateTime" Precision="0" />
+          <Property Name="AtEndAssignment" Type="DateTime" Precision="0" />
+          <Property Name="AtScheduledEndAssignment" Type="DateTime" Precision="0" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Traders" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierFax" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AtRepair" Type="DateTime" Precision="0" />
+          <Property Name="RepairTime" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+          <Property Name="AssetId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalValue" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NumbersOfNewAsset" Type="Int32" />
+          <Property Name="NumbersOfLiquidation" Type="Int32" />
+          <Property Name="NumbersOfStopUsing" Type="Int32" />
+          <Property Name="NumbersOfAsset" Type="Int32" />
+          <Property Name="TotalNewAsset" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TotalLiquidation" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TotalStopUsing" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TotalRepair" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Floor" Type="Int32" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="LinkWebsite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ward" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessRegistrationCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="QLTS_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Areas" EntityType="Self.Area" />
+          <EntitySet Name="AssetAllocations" EntityType="Self.AssetAllocation" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="ManagementAssignments" EntityType="Self.ManagementAssignment" />
+          <EntitySet Name="Repairs" EntityType="Self.Repair" />
+          <EntitySet Name="Reports" EntityType="Self.Report" />
+          <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Units" EntityType="Self.Unit" />
+          <EntitySet Name="Assets" EntityType="QLTS_DBModel.Asset" />
+          <EntitySet Name="DeviceErrorReports" EntityType="QLTS_DBModel.DeviceErrorReport" />
+        </EntityContainer>
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AtImport" Type="DateTime" Precision="0" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="Uses" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AtBuy" Type="DateTime" Precision="0" />
+          <Property Name="AtUsing" Type="DateTime" Precision="0" />
+          <Property Name="AtStopUsing" Type="DateTime" Precision="0" />
+          <Property Name="AtLiquidation" Type="DateTime" Precision="0" />
+          <Property Name="Number" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Serial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Part" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="LicensePlate" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Wattage" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="WMax" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="WMin" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SpecificGravity" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Length" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Width" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Height" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Radius" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Perimeter" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Area" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NoteSpecification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Maintenance" Type="Int32" />
+          <Property Name="Accreditation" Type="Int32" />
+          <Property Name="Inventory" Type="Int32" />
+          <Property Name="Insurance" Type="Int32" />
+          <Property Name="Fuel" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Diesel" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Tire" Type="Int32" />
+          <Property Name="Battery" Type="Int32" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="DeviceErrorReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetId" Type="Int32" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HandlerId" Type="Int32" />
+          <Property Name="AtReport" Type="DateTime" Precision="0" />
+          <Property Name="AtReciver" Type="DateTime" Precision="0" />
+          <Property Name="AtHandler" Type="DateTime" Precision="0" />
+          <Property Name="AtCreate" Type="DateTime" Precision="0" />
+          <Property Name="AtUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLTS_DBModelStoreContainer" CdmEntityContainer="QLTS_DBEntities">
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="QLTS_DBModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssetAllocations">
+            <EntityTypeMapping TypeName="QLTS_DBModel.AssetAllocation">
+              <MappingFragment StoreEntitySet="AssetAllocation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="AtAllocation" ColumnName="AtAllocation" />
+                <ScalarProperty Name="AtEndAllocation" ColumnName="AtEndAllocation" />
+                <ScalarProperty Name="AtScheduledEndAllocation" ColumnName="AtScheduledEndAllocation" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="QLTS_DBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManagementAssignments">
+            <EntityTypeMapping TypeName="QLTS_DBModel.ManagementAssignment">
+              <MappingFragment StoreEntitySet="ManagementAssignment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="AtAssignment" ColumnName="AtAssignment" />
+                <ScalarProperty Name="AtEndAssignment" ColumnName="AtEndAssignment" />
+                <ScalarProperty Name="AtScheduledEndAssignment" ColumnName="AtScheduledEndAssignment" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repairs">
+            <EntityTypeMapping TypeName="QLTS_DBModel.Repair">
+              <MappingFragment StoreEntitySet="Repair">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="InvoiceCode" ColumnName="InvoiceCode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Traders" ColumnName="Traders" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+                <ScalarProperty Name="SupplierPhone" ColumnName="SupplierPhone" />
+                <ScalarProperty Name="SupplierFax" ColumnName="SupplierFax" />
+                <ScalarProperty Name="SupplierMail" ColumnName="SupplierMail" />
+                <ScalarProperty Name="AtRepair" ColumnName="AtRepair" />
+                <ScalarProperty Name="RepairTime" ColumnName="RepairTime" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="QLTS_DBModel.Report">
+              <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+                <ScalarProperty Name="NumbersOfNewAsset" ColumnName="NumbersOfNewAsset" />
+                <ScalarProperty Name="NumbersOfLiquidation" ColumnName="NumbersOfLiquidation" />
+                <ScalarProperty Name="NumbersOfStopUsing" ColumnName="NumbersOfStopUsing" />
+                <ScalarProperty Name="NumbersOfAsset" ColumnName="NumbersOfAsset" />
+                <ScalarProperty Name="TotalNewAsset" ColumnName="TotalNewAsset" />
+                <ScalarProperty Name="TotalLiquidation" ColumnName="TotalLiquidation" />
+                <ScalarProperty Name="TotalStopUsing" ColumnName="TotalStopUsing" />
+                <ScalarProperty Name="TotalRepair" ColumnName="TotalRepair" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="QLTS_DBModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="QLTS_DBModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="QLTS_DBModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupI" ColumnName="GroupI" />
+                <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="LinkWebsite" ColumnName="LinkWebsite" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Ward" ColumnName="Ward" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="BusinessRegistrationCode" ColumnName="BusinessRegistrationCode" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLTS_DBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="QLTS_DBModel.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assets">
+            <EntityTypeMapping TypeName="QLTS_DBModel.Asset">
+              <MappingFragment StoreEntitySet="Asset">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="Tire" ColumnName="Tire" />
+                <ScalarProperty Name="Diesel" ColumnName="Diesel" />
+                <ScalarProperty Name="Fuel" ColumnName="Fuel" />
+                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+                <ScalarProperty Name="Inventory" ColumnName="Inventory" />
+                <ScalarProperty Name="Accreditation" ColumnName="Accreditation" />
+                <ScalarProperty Name="Maintenance" ColumnName="Maintenance" />
+                <ScalarProperty Name="NoteSpecification" ColumnName="NoteSpecification" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Perimeter" ColumnName="Perimeter" />
+                <ScalarProperty Name="Radius" ColumnName="Radius" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="SpecificGravity" ColumnName="SpecificGravity" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="WMin" ColumnName="WMin" />
+                <ScalarProperty Name="WMax" ColumnName="WMax" />
+                <ScalarProperty Name="Wattage" ColumnName="Wattage" />
+                <ScalarProperty Name="LicensePlate" ColumnName="LicensePlate" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Part" ColumnName="Part" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="AtLiquidation" ColumnName="AtLiquidation" />
+                <ScalarProperty Name="AtStopUsing" ColumnName="AtStopUsing" />
+                <ScalarProperty Name="AtUsing" ColumnName="AtUsing" />
+                <ScalarProperty Name="AtBuy" ColumnName="AtBuy" />
+                <ScalarProperty Name="Uses" ColumnName="Uses" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AtImport" ColumnName="AtImport" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceErrorReports">
+            <EntityTypeMapping TypeName="QLTS_DBModel.DeviceErrorReport">
+              <MappingFragment StoreEntitySet="DeviceErrorReport">
+                <ScalarProperty Name="AtUpdate" ColumnName="AtUpdate" />
+                <ScalarProperty Name="AtCreate" ColumnName="AtCreate" />
+                <ScalarProperty Name="AtHandler" ColumnName="AtHandler" />
+                <ScalarProperty Name="AtReciver" ColumnName="AtReciver" />
+                <ScalarProperty Name="AtReport" ColumnName="AtReport" />
+                <ScalarProperty Name="HandlerId" ColumnName="HandlerId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

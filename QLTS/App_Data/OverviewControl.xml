@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Nodes>
+	<TreeViewNode Text="Kiến trúc" NavigateUrl="/Control/Index">
+		<TreeViewNode Text="Khu vực/Toà nhà" NavigateUrl="/Area/Index" />
+		<TreeViewNode Text="Phòng/Sân" NavigateUrl="/Room/Index" />
+	</TreeViewNode>
+	<TreeViewNode Text="Tài sản" NavigateUrl="/Control/Index">
+		<TreeViewNode Text="Tài sản" NavigateUrl="/Asset/Index" />
+		<TreeViewNode Text="Phân loại tài sản" NavigateUrl="/Category/Index" />
+		<TreeViewNode Text="Nhà cung cấp" NavigateUrl="/Supplier/Index" />
+	</TreeViewNode>
+	<TreeViewNode Text="Hoạt động" NavigateUrl="/Control/Index">
+		<TreeViewNode Text="Bảo trì/Bảo dưỡng/Sửa chữa" NavigateUrl="/Repair/Index" />
+		<TreeViewNode Text="Báo lỗi thiết bị" NavigateUrl="/DeviceErrorReport/Index" />
+		<TreeViewNode Text="Phân bổ tài sản" NavigateUrl="/AssetAllocation/Index" />
+		<TreeViewNode Text="Phân công quản lý" NavigateUrl="/ManagementAssignment/Index/" />
+	</TreeViewNode>
+</Nodes>

@@ -1,0 +1,482 @@
+﻿@model List<QLTS.Models.AssetModel.AssetModel>
+
+@{
+    var gridView = Html.DevExpress().GridView(gridViewSettings =>
+    {
+        gridViewSettings.Name = "gridView";
+        gridViewSettings.KeyFieldName = "Id";
+
+        gridViewSettings.CallbackRouteValues = new { Controller = "Asset", Action = "GridViewPartial" };
+        gridViewSettings.CustomActionRouteValues = new { Controller = "Asset", Action = "GridViewCustomActionPartial" };
+        gridViewSettings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Asset", Action = "GridViewAddNewPartial" };
+        gridViewSettings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Asset", Action = "GridViewUpdatePartial" };
+
+        gridViewSettings.EnablePagingGestures = AutoBoolean.False;
+
+        gridViewSettings.ControlStyle.CssClass = "grid-view";
+        gridViewSettings.Width = Unit.Percentage(100);
+
+        gridViewSettings.Styles.Cell.Wrap = DefaultBoolean.False;
+        gridViewSettings.Styles.PagerBottomPanel.CssClass = "pager";
+        gridViewSettings.Styles.FocusedRow.CssClass = "focused";
+
+        @*gridViewSettings.SettingsContextMenu.Enabled = true;*@
+
+        gridViewSettings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        gridViewSettings.SettingsResizing.Visualization = ResizingMode.Live;
+
+        gridViewSettings.SettingsBehavior.ProcessColumnMoveOnClient = true;
+        gridViewSettings.SettingsBehavior.ColumnMoveMode = GridColumnMoveMode.AmongSiblings;
+
+        gridViewSettings.SettingsBehavior.AllowFocusedRow = true;
+        gridViewSettings.SettingsBehavior.AllowSelectByRowClick = true;
+        gridViewSettings.SettingsBehavior.AllowEllipsisInText = true;
+        gridViewSettings.SettingsBehavior.AllowDragDrop = true;
+
+        gridViewSettings.SettingsSearchPanel.CustomEditorName = "searchButtonEdit";
+
+        gridViewSettings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        gridViewSettings.SettingsEditing.EditFormColumnCount = 2;
+
+        gridViewSettings.SettingsSearchPanel.CustomEditorName = "searchButtonEdit";
+
+        gridViewSettings.Settings.VerticalScrollBarMode = ScrollBarMode.Hidden;
+        gridViewSettings.Settings.HorizontalScrollBarMode = ScrollBarMode.Auto;
+        gridViewSettings.Settings.ShowHeaderFilterButton = true;
+
+        gridViewSettings.SettingsPager.PageSize = 15;
+        gridViewSettings.SettingsPager.EnableAdaptivity = true;
+        gridViewSettings.SettingsPager.PageSizeItemSettings.Visible = true;
+
+        gridViewSettings.SettingsExport.EnableClientSideExportAPI = true;
+        gridViewSettings.SettingsExport.ExportSelectedRowsOnly = true;
+
+        gridViewSettings.SettingsPopup.EditForm.SettingsAdaptivity.MaxWidth = 800;
+        gridViewSettings.SettingsPopup.EditForm.SettingsAdaptivity.Mode = PopupControlAdaptivityMode.Always;
+        gridViewSettings.SettingsPopup.EditForm.SettingsAdaptivity.VerticalAlign = PopupAdaptiveVerticalAlign.WindowCenter;
+        gridViewSettings.SettingsText.PopupEditFormCaption = "Biểu mẫu";
+        gridViewSettings.SettingsText.CommandUpdate = "Lưu";
+        gridViewSettings.SettingsText.CommandCancel = "Huỷ";
+        gridViewSettings.SettingsPager.PageSizeItemSettings.Caption = "Kích cỡ";
+        gridViewSettings.SettingsPager.Summary.Text = "Trang {0} / {1} ({2:n0} bản ghi)";
+
+        gridViewSettings.EditFormLayoutProperties.SettingsAdaptivity.AdaptivityMode = FormLayoutAdaptivityMode.SingleColumnWindowLimit;
+        gridViewSettings.EditFormLayoutProperties.SettingsAdaptivity.SwitchToSingleColumnAtWindowInnerWidth = 600;
+        gridViewSettings.EditFormLayoutProperties.ColCount = 2;
+        gridViewSettings.EditFormLayoutProperties.Items.Add(i =>
+        {
+            i.ColumnName = "Image";
+            i.RowSpan = 4;
+            i.ShowCaption = DefaultBoolean.False;
+            i.Width = 160;
+        });
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Name").RequiredMarkDisplayMode = FieldRequiredMarkMode.Required;
+        gridViewSettings.EditFormLayoutProperties.Items.Add("AssetId");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("BarCode");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("AtImport");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("CategoryId");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Status");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Quantity");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Amount");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("UnitId");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Country");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("SupplierId");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Uses");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("AtBuy");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("AtUsing");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("AtStopUsing");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("AtLiquidation");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Number");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Serial");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Part");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Model");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("LicensePlate");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Wattage");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("WMax");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("WMin");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Weight");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("SpecificGravity");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Length");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Width");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Height");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Radius");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Perimeter");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Area");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("NoteSpecification");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Maintenance");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Accreditation");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Inventory");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Insurance");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Fuel");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Diesel");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Tire");
+        gridViewSettings.EditFormLayoutProperties.Items.Add("Battery");
+        gridViewSettings.EditFormLayoutProperties.Items.AddCommandItem(itemSettings =>
+        {
+            itemSettings.ColumnSpan = 2;
+            itemSettings.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+        });
+
+        gridViewSettings.CommandColumn.Visible = true;
+        gridViewSettings.CommandColumn.ShowSelectCheckbox = true;
+        gridViewSettings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.AllPages;
+        gridViewSettings.CommandColumn.VisibleIndex = 0;
+        gridViewSettings.CommandColumn.Width = Unit.Pixel(52);
+
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Id";
+            columnSettings.Caption = "Mã";
+            columnSettings.Width = System.Web.UI.WebControls.Unit.Pixel(100);
+        });
+        gridViewSettings.Columns.Add(c =>
+        {
+            c.FieldName = "Image";
+            c.Caption = "Hình ảnh";
+            c.EditorProperties().BinaryImage(p =>
+            {
+                p.ImageHeight = 170;
+                p.ImageWidth = 160;
+                p.EnableServerResize = true;
+                p.ImageSizeMode = ImageSizeMode.FitProportional;
+                p.CallbackRouteValues = new { Action = "BinaryImageColumnPhotoUpdate", Controller = "Asset" };
+                p.EditingSettings.Enabled = true;
+                p.EditingSettings.UploadSettings.UploadValidationSettings.MaxFileSize = 4194304;
+            });
+            c.Width = System.Web.UI.WebControls.Unit.Pixel(200);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "AssetId";
+            columnSettings.Caption = "Mã tài sản";
+            columnSettings.Width = System.Web.UI.WebControls.Unit.Pixel(180);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Name";
+            columnSettings.Caption = "Tên";
+
+            columnSettings.Width = System.Web.UI.WebControls.Unit.Pixel(400);
+            columnSettings.CellStyle.HorizontalAlign = HorizontalAlign.Left;
+            columnSettings.ExportCellStyle.HorizontalAlign = HorizontalAlign.Left;
+            columnSettings.SetDataItemTemplateContent(c =>
+            {
+                Html.DevExpress().HyperLink(hyperLinkSettings =>
+                {
+                    hyperLinkSettings.Properties.Text = (string)DataBinder.Eval(c.DataItem, "Name");
+                    hyperLinkSettings.NavigateUrl = Url.Action("GridViewDetailsPage", "Asset", new { id = DataBinder.Eval(c.DataItem, "Id") });
+                }).Render();
+            });
+
+            columnSettings.Settings.FilterMode = ColumnFilterMode.DisplayText;
+            columnSettings.Settings.SortMode = DevExpress.XtraGrid.ColumnSortMode.DisplayText;
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "BarCode";
+            columnSettings.Caption = "Mã vạch";
+            columnSettings.Width = System.Web.UI.WebControls.Unit.Pixel(180);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "AtImport";
+            columnSettings.Caption = "Ngày vào sổ";
+            columnSettings.Width = System.Web.UI.WebControls.Unit.Pixel(200);
+            columnSettings.PropertiesEdit.DisplayFormatString = "d";
+            columnSettings.ColumnType = MVCxGridViewColumnType.DateEdit;
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "CategoryId";
+            columnSettings.Caption = "Phân loại";
+            columnSettings.Visible = false;
+            columnSettings.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+            var comboBoxProperties = columnSettings.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.ValueField = "Id";
+            comboBoxProperties.TextField = "Name";
+            comboBoxProperties.ValueType = typeof(long);
+            comboBoxProperties.DataSource = QLTS.Models.CategoryModel.CategoryHelper.GetCategoriesNotJoin();
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Category.Name";
+            columnSettings.Caption = "Phân loại";
+            columnSettings.Width = Unit.Pixel(150);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "SupplierId";
+            columnSettings.Caption = "Nhà cung cấp";
+            columnSettings.Visible = false;
+            columnSettings.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+            var comboBoxProperties = columnSettings.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.ValueField = "Id";
+            comboBoxProperties.TextField = "Name";
+            comboBoxProperties.ValueType = typeof(long);
+            comboBoxProperties.DataSource = QLTS.Models.SupplierModel.SupplierHelper.GetSuppliers();
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Supplier.Name";
+            columnSettings.Caption = "Nhà cung cấp";
+            columnSettings.Width = Unit.Pixel(150);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Status";
+            columnSettings.Caption = "Trạng thái";
+            columnSettings.Width = Unit.Pixel(150);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Uses";
+            columnSettings.Caption = "Công dụng";
+            columnSettings.Width = Unit.Pixel(150);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Amount";
+            columnSettings.Caption = "Giá trị(VNĐ)";
+            columnSettings.Width = Unit.Pixel(150);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Quantity";
+            columnSettings.Caption = "Số lượng";
+            columnSettings.Width = Unit.Pixel(150);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "UnitId";
+            columnSettings.Caption = "Đơn vị tính";
+            columnSettings.Visible = false;
+            columnSettings.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+            var comboBoxProperties = columnSettings.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.ValueField = "Id";
+            comboBoxProperties.TextField = "Name";
+            comboBoxProperties.ValueType = typeof(long);
+            comboBoxProperties.DataSource = QLTS.Models.UnitModel.UnitHelper.GetUnits();
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Unit.Name";
+            columnSettings.Caption = "Đơn vị";
+            columnSettings.Width = Unit.Pixel(150);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Country";
+            columnSettings.Caption = "Đất nước";
+            columnSettings.Width = Unit.Pixel(150);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "AtCreate";
+            columnSettings.Caption = "Ngày tạo";
+            columnSettings.Width = System.Web.UI.WebControls.Unit.Pixel(200);
+            columnSettings.PropertiesEdit.DisplayFormatString = "d";
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "AtUpdate";
+            columnSettings.Caption = "Ngày chỉnh sửa";
+            columnSettings.Width = System.Web.UI.WebControls.Unit.Pixel(200);
+            columnSettings.PropertiesEdit.DisplayFormatString = "d";
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "AtBuy";
+            columnSettings.Caption = "Ngày mua";
+            columnSettings.Width = Unit.Pixel(0);
+            columnSettings.ColumnType = MVCxGridViewColumnType.DateEdit;
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "AtUsing";
+            columnSettings.Caption = "Ngày sử dụng";
+            columnSettings.Width = Unit.Pixel(0);
+            columnSettings.ColumnType = MVCxGridViewColumnType.DateEdit;
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "AtStopUsing";
+            columnSettings.Caption = "Ngày ngừng sử dụng";
+            columnSettings.Width = Unit.Pixel(0);
+            columnSettings.ColumnType = MVCxGridViewColumnType.DateEdit;
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "AtLiquidation";
+            columnSettings.Caption = "Ngày thanh lý";
+            columnSettings.Width = Unit.Pixel(0);
+            columnSettings.ColumnType = MVCxGridViewColumnType.DateEdit;
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Number";
+            columnSettings.Caption = "Số hiệu";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Serial";
+            columnSettings.Caption = "Số seri";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Part";
+            columnSettings.Caption = "Số phần";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Model";
+            columnSettings.Caption = "Số model";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "LicensePlate";
+            columnSettings.Caption = "Biển số";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Wattage";
+            columnSettings.Caption = "Công suất";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "WMax";
+            columnSettings.Caption = "Công suất tối đa";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "WMin";
+            columnSettings.Caption = "Công suất tối thiểu";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Weight";
+            columnSettings.Caption = "Trọng lượng";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "SpecificGravity";
+            columnSettings.Caption = "Trọng lượng riêng";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Length";
+            columnSettings.Caption = "Chiều dài";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Width";
+            columnSettings.Caption = "Chiều rộng";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Height";
+            columnSettings.Caption = "Chiều cao";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Radius";
+            columnSettings.Caption = "Bán kính";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Perimeter";
+            columnSettings.Caption = "Chu vi";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Area";
+            columnSettings.Caption = "Diện tích";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "NoteSpecification";
+            columnSettings.Caption = "Ghi chú thông số kỹ thuật";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Maintenance";
+            columnSettings.Caption = "Thời gian bảo trì(Tháng)";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Accreditation";
+            columnSettings.Caption = "Kiểm định(Tháng)";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Inventory";
+            columnSettings.Caption = "Kiểm kê(Tháng)";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Insurance";
+            columnSettings.Caption = "Bảo hiểm";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Fuel";
+            columnSettings.Caption = "Nhiên liệu";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Diesel";
+            columnSettings.Caption = "Dầu máy";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Tire";
+            columnSettings.Caption = "Lốp xe";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.Columns.Add(columnSettings =>
+        {
+            columnSettings.FieldName = "Battery";
+            columnSettings.Caption = "Ắc quy";
+            columnSettings.Width = Unit.Pixel(0);
+        });
+        gridViewSettings.ClientSideEvents.Init = "onGridViewInit";
+        gridViewSettings.ClientSideEvents.SelectionChanged = "onGridViewSelectionChanged";
+        gridViewSettings.ClientSideEvents.BeginCallback = "onGridViewBeginCallback";
+
+        gridViewSettings.CellEditorInitialize = (s, e) =>
+        {
+            ((ASPxEdit)e.Editor).ValidationSettings.Display = Display.Dynamic;
+        };
+    });
+    if (ViewBag.GeneralError != null)
+    {
+        gridView.SetEditErrorText(ViewBag.GeneralError);
+    }
+}
+
+@gridView.Bind(Model).GetHtml()

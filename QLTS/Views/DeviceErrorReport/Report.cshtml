@@ -1,0 +1,94 @@
+﻿@model QLTS.Models.DeviceErrorReport
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head {
+    <script src="@Url.Content("~/Scripts/jquery.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <style type="text/css">
+        .formLayout {
+            max-width: 1300px;
+            margin: auto;
+        }
+    </style>
+}
+@{ 
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.DevExpress().FormLayout(settings =>
+{
+   settings.Name = "FormLayout1";
+   settings.SettingsAdaptivity.AdaptivityMode = FormLayoutAdaptivityMode.SingleColumnWindowLimit;
+   settings.SettingsAdaptivity.SwitchToSingleColumnAtWindowInnerWidth = 700;
+   settings.ControlStyle.CssClass = "formLayout";
+
+   var groupItem = settings.Items.AddGroupItem(groupSettings =>
+   {
+       groupSettings.Caption = "Báo lỗi thiết bị";
+       groupSettings.ColCount = 1;
+       groupSettings.UseDefaultPaddings = false;
+       groupSettings.Paddings.PaddingTop = Unit.Pixel(10);
+       groupSettings.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
+       groupSettings.GroupBoxStyle.Caption.Font.Bold = true;
+       groupSettings.GroupBoxStyle.Caption.Font.Size = 16;
+
+       groupSettings.Items.Add(model => model.Status, item =>
+       {
+           item.Caption = "Trạng thái";
+           item.NestedExtension().ComboBox(s =>
+           {
+               s.ShowModelErrors = true;
+               s.Properties.ValidationSettings.Display = Display.Dynamic;
+               s.SelectedIndex = 0;
+               s.Properties.ValueType = typeof(string);
+               s.Properties.DataSource = QLTS.Models.DeviceErrorReportModel.DeviceErrorReportStatusHelper.GetStatus();
+           });
+       });
+
+       groupSettings.Items.Add(model => model.Message, item =>
+       {
+           item.Caption = "Mô tả lỗi";
+           item.NestedExtension().Memo(s =>
+           {
+               s.ShowModelErrors = true;
+               s.Properties.Rows = 9;
+               s.Properties.ValidationSettings.Display = Display.Dynamic;
+           });
+       });
+
+       groupSettings.Items.Add(i =>
+       {
+           i.ShowCaption = DefaultBoolean.False;
+           i.Width = Unit.Percentage(100);
+           i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+       }).SetNestedContent(() =>
+       {
+           ViewContext.Writer.Write("<table><tr><td style=\"padding-right:10px;\">");
+
+           Html.DevExpress().Button(s =>
+           {
+               s.Name = "Submit";
+               s.Width = Unit.Pixel(100);
+               s.Text = "Gửi";
+               s.UseSubmitBehavior = true;
+           }).Render();
+
+           ViewContext.Writer.Write("</td></tr></table>");
+       });
+   });
+
+   groupItem.SettingsItems.ShowCaption = DefaultBoolean.True;
+   groupItem.SettingsItemCaptions.Location = LayoutItemCaptionLocation.Left;
+
+   groupItem.SettingsItemHelpTexts.Position = HelpTextPosition.Auto;
+
+}).GetHtml()
+}
+
