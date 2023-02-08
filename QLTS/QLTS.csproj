@@ -385,6 +385,12 @@
     <Compile Include="Models\Report.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReportCategory.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportStatu.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Room.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
@@ -403,6 +409,9 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SystemModel\AssetStatusHelper.cs" />
+    <Compile Include="Models\SystemModel\AssetStatusModel.cs" />
+    <Compile Include="Models\SystemModel\AutoHelper.cs" />
     <Compile Include="Models\Unit.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

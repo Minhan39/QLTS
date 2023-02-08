@@ -5,19 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c8d7229b6ab24f91a8680aeee0a744ad" Name="Diagram1">
-        <EntityTypeShape EntityType="QLTS_DBModel.Area" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.AssetAllocation" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.Category" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.ManagementAssignment" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.Repair" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.Report" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.Room" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.Staff" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.Supplier" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.sysdiagram" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.Unit" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTS_DBModel.Asset" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="QLTS_DBModel.DeviceErrorReport" Width="1.5" PointX="11.375" PointY="10.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.Area" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.Asset" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.AssetAllocation" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.Category" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.DeviceErrorReport" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.ManagementAssignment" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.Repair" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.Report" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.ReportCategory" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.ReportStatu" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.Room" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.Staff" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.Supplier" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.sysdiagram" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="QLTS_DBModel.Unit" Width="1.5" PointX="0.75" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

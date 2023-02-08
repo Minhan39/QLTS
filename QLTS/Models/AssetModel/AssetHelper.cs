@@ -72,6 +72,7 @@ namespace QLTS.Models.AssetModel
         {
             asset.AtCreate = DateTime.Now;
             db.Assets.Add(asset);
+
             db.SaveChanges();
         }
 

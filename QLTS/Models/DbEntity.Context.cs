@@ -26,17 +26,19 @@ namespace QLTS.Models
         }
     
         public virtual DbSet<Area> Areas { get; set; }
+        public virtual DbSet<Asset> Assets { get; set; }
         public virtual DbSet<AssetAllocation> AssetAllocations { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<DeviceErrorReport> DeviceErrorReports { get; set; }
         public virtual DbSet<ManagementAssignment> ManagementAssignments { get; set; }
         public virtual DbSet<Repair> Repairs { get; set; }
         public virtual DbSet<Report> Reports { get; set; }
+        public virtual DbSet<ReportCategory> ReportCategories { get; set; }
+        public virtual DbSet<ReportStatu> ReportStatus { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
-        public virtual DbSet<Asset> Assets { get; set; }
-        public virtual DbSet<DeviceErrorReport> DeviceErrorReports { get; set; }
     }
 }

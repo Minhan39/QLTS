@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using QLTS.Models.SystemModel;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace QLTS {
+namespace QLTS
+{
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
@@ -21,6 +22,18 @@ namespace QLTS {
             ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
 
             DevExpress.Web.ASPxWebControl.CallbackError += Application_Error;
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    if(DateTime.Now.Day == 1)
+                    {
+                        AutoHelper.AddNewRecordReportAtBegingOfMonth();
+                        break;
+                    }
+                    Thread.Sleep(1000);
+                }
+            }, TaskCreationOptions.LongRunning);
         }
 
         protected void Application_Error(object sender, EventArgs e) {

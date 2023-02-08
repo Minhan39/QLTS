@@ -12,7 +12,7 @@ namespace QLTS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Report
+    public partial class ReportStatu
     {
         public int Id { get; set; }
         public string ReportId { get; set; }
