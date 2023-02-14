@@ -44,6 +44,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v21.2.Web, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v21.2.Web.Mvc5, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v21.2.Web.WebForms, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Map.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v21.2.Drawing, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.TreeMap.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Resources.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.Web, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -126,6 +146,7 @@
     <Content Include="App_Data\ApplicationMenuDataSource.sitemap" />
     <Content Include="App_Data\Article.html" />
     <Content Include="App_Data\ArticleContents.xml" />
+    <Content Include="App_Data\Dashboards\dashboard1.xml" />
     <Content Include="App_Data\Overview.html" />
     <Content Include="App_Data\OverviewContents.xml" />
     <Content Include="App_Data\OverviewControl.xml" />
@@ -217,16 +238,6 @@
     <Content Include="Content\SignInRegister.css" />
     <Content Include="Content\SignInRegister.js" />
     <Content Include="Global.asax" />
-    <Content Include="Models\DbEntity.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbEntity.edmx</DependentUpon>
-      <LastGenOutput>DbEntity.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\DbEntity.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbEntity.edmx</DependentUpon>
-      <LastGenOutput>DbEntity.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -246,20 +257,11 @@
     <Content Include="Views\GridView\GridViewPartial.cshtml" />
     <Content Include="Views\GridView\Index.cshtml" />
     <Content Include="Views\GridView\LeftPanelPartial.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\LeftPanelPartial.cshtml" />
     <Content Include="Views\Scheduler\FilterComboBoxPartial.cshtml" />
     <Content Include="Views\Scheduler\Index.cshtml" />
     <Content Include="Views\Scheduler\LeftPanelPartial.cshtml" />
     <Content Include="Views\Scheduler\SchedulerPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <EntityDeploy Include="Models\DbEntity.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbEntity.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DbEntity.edmx.diagram">
-      <DependentUpon>DbEntity.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Views\Area\GridViewDetailsPage.cshtml" />
     <Content Include="Views\Area\GridViewPartial.cshtml" />
@@ -296,6 +298,8 @@
     <Content Include="Views\DeviceErrorReport\Index.cshtml" />
     <Content Include="Views\DeviceErrorReport\LeftPanelPartial.cshtml" />
     <Content Include="Views\DeviceErrorReport\GridViewPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\LeftPanelPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -304,18 +308,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\DashboardConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\AuthHelper.cs" />
     <Compile Include="Code\DBContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\api\AssetsController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AssetAllocationController.cs" />
     <Compile Include="Controllers\AssetController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\DefaultDashboardController.cs" />
     <Compile Include="Controllers\DeviceErrorReportController.cs" />
     <Compile Include="Controllers\GridViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -328,100 +335,59 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account\AccountViewModels.cs" />
-    <Compile Include="Models\Area.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Area.cs" />
     <Compile Include="Models\AreaModel\AreaHelper.cs" />
-    <Compile Include="Models\Asset.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AssetAllocation.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Asset.cs" />
+    <Compile Include="Models\AssetAllocation.cs" />
     <Compile Include="Models\AssetAllocationModel\AssetAllocationHelper.cs" />
     <Compile Include="Models\AssetAllocationModel\AssetAllocationModel.cs" />
     <Compile Include="Models\AssetAndStaffModel\AssetAndStaffHelper.cs" />
     <Compile Include="Models\AssetAndStaffModel\AssetAndStaffModel.cs" />
     <Compile Include="Models\AssetModel\AssetHelper.cs" />
     <Compile Include="Models\AssetModel\AssetModel.cs" />
-    <Compile Include="Models\Category.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryModel\CategoryHelper.cs" />
     <Compile Include="Models\CategoryModel\CategoryModel.cs" />
-    <Compile Include="Models\DbEntity.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbEntity.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DbEntity.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DbEntity.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbEntity.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DeviceErrorReport.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\DeviceErrorReport.cs" />
     <Compile Include="Models\DeviceErrorReportModel\DeviceErrorReportHelper.cs" />
     <Compile Include="Models\DeviceErrorReportModel\DeviceErrorReportModel.cs" />
     <Compile Include="Models\DeviceErrorReportModel\DeviceErrorReportStatusHelper.cs" />
     <Compile Include="Models\GridView\GridViewHelper.cs" />
-    <Compile Include="Models\ManagementAssignment.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\ManagementAssignment.cs" />
     <Compile Include="Models\ManagementAssignmentModel\ManagementAssignmentHelper.cs" />
     <Compile Include="Models\ManagementAssignmentModel\ManagementAssignmentModel.cs" />
-    <Compile Include="Models\Repair.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\QLTS_DBEntities.cs" />
+    <Compile Include="Models\Repair.cs" />
     <Compile Include="Models\RepairModel\RepairHelper.cs" />
     <Compile Include="Models\RepairModel\RepairModel.cs" />
     <Compile Include="Models\RepairModel\RepairTypeHelper.cs" />
-    <Compile Include="Models\Report.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ReportCategory.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ReportStatu.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Room.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Report.cs" />
+    <Compile Include="Models\ReportCategory.cs" />
+    <Compile Include="Models\ReportModel\DataReportHelper.cs" />
+    <Compile Include="Models\ReportStatu.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RoomModel\RoomHelper.cs" />
     <Compile Include="Models\RoomModel\RoomModel.cs" />
     <Compile Include="Models\Scheduler\SchedulerDataSource.cs" />
     <Compile Include="Models\Scheduler\SchedulerHelper.cs" />
-    <Compile Include="Models\Staff.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\StaffModel\StaffHelper.cs" />
-    <Compile Include="Models\Supplier.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SupplierModel\SupplierHelper.cs" />
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\SystemModel\AssetStatusHelper.cs" />
     <Compile Include="Models\SystemModel\AssetStatusModel.cs" />
     <Compile Include="Models\SystemModel\AutoHelper.cs" />
-    <Compile Include="Models\Unit.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\UnitModel\UnitHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Assets\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

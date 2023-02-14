@@ -1,6 +1,7 @@
-﻿<h3 class="section-caption contents-caption">Contents</h3>
+﻿<h3 class="section-caption contents-caption">Bảng điều kiển</h3>
 
-@Html.DevExpress().TreeView(settings => {
+@Html.DevExpress().TreeView(settings =>
+{
     settings.Name = "tableOfContentsTreeView";
     settings.EnableNodeTextWrapping = true;
     settings.AllowSelectNode = true;
@@ -12,8 +13,9 @@
     settings.Styles.Elbow.CssClass = "tree-view-elbow";
     settings.ClientSideEvents.NodeClick = "function (s, e) { HideLeftPanelIfRequired(); }";
 
-    settings.PreRender = (source, e) => {
+    settings.PreRender = (source, e) =>
+    {
         ASPxTreeView treeView = (ASPxTreeView)source;
         treeView.ExpandAll();
     };
-}).BindToXML(Server.MapPath("~/App_Data/OverviewContents.xml"), "//Nodes/*").GetHtml()
+}).BindToXML(Server.MapPath("~/App_Data/OverviewControl.xml"), "//Nodes/*").GetHtml()

@@ -31,6 +31,8 @@ namespace QLTS.Models.SystemModel
             reports.Add(report);
 
             var categories = CategoryModel.CategoryHelper.GetCategoriesNotJoin();
+            int rootId = categories.Find(n => n.Name == "ROOT").Id;
+            categories = categories.Where(n => n.Name != "ROOT").ToList();
             foreach (Category item in categories)
             {
                 string categoryId = "C" + item.Id.ToString();
@@ -44,7 +46,9 @@ namespace QLTS.Models.SystemModel
                     TotalIncrease = 0,
                     NumberIncrease = 0,
                     TotalDecrease = 0,
-                    NumberDecrease = 0
+                    NumberDecrease = 0,
+                    CategoryName = item.Name,
+                    IsFirstClassCategory = item.ParentId == rootId ? true : false
                 };
                 reportCategories.Add(reportCategory);
             }
@@ -63,16 +67,13 @@ namespace QLTS.Models.SystemModel
                     TotalIncrease = 0,
                     NumberIncrease = 0,
                     TotalDecrease = 0,
-                    NumberDecrease = 0
+                    NumberDecrease = 0,
+                    StatusName = item.Name
                 };
                 reportStatus.Add(reportStatu);
             }
 
             db.SaveChanges();
-        }
-        public static void UpdateRecordReportCategory()
-        {
-
         }
     }
 }

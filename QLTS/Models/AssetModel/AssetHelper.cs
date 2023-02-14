@@ -1,7 +1,7 @@
 ﻿using DevExpress.Web.Mvc;
+using QLTS.Models.ReportModel;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
 
 namespace QLTS.Models.AssetModel
@@ -72,13 +72,22 @@ namespace QLTS.Models.AssetModel
         {
             asset.AtCreate = DateTime.Now;
             db.Assets.Add(asset);
-
             db.SaveChanges();
+
+            decimal total = (decimal)((asset.Amount == null || asset.Quantity == null) ? 0 : asset.Amount * asset.Quantity);
+            int numbers = (int)((asset.Quantity == null) ? 0 : asset.Quantity);
+            DataReportHelper.UpdateReport(total, numbers);
+            DataReportHelper.UpdateReportCategory(total, numbers, asset.CategoryId);
         }
 
         public static void UpdateRecord(Asset asset)
         {
             Asset item = db.Assets.Find(asset.Id);
+            decimal newTotal = (decimal)((asset.Amount == null || asset.Quantity == null) ? 0 : asset.Amount * asset.Quantity);
+            decimal oldTotal = (decimal)((item.Amount == null || item.Quantity == null) ? 0 : item.Amount * item.Quantity);
+            int newNumbers = (int)((asset.Quantity == null) ? 0 : asset.Quantity);
+            int oldNumbers = (int)((item.Quantity == null) ? 0 : item.Quantity);
+            int? oldCategoryId = item.CategoryId;
             item.Name = asset.Name;
             item.AssetId = asset.AssetId;
             item.BarCode = asset.BarCode;
@@ -122,14 +131,34 @@ namespace QLTS.Models.AssetModel
             item.Battery = asset.Battery;
             item.AtUpdate = DateTime.Now;
             db.SaveChanges();
+
+            DataReportHelper.UpdateReport(newTotal - oldTotal, newNumbers - oldNumbers);
+            if (oldCategoryId == item.CategoryId)
+                DataReportHelper.UpdateReportCategory(-1 * newTotal, -1 * newNumbers, item.CategoryId);
+            else
+                DataReportHelper.UpdateReportCategory(-1 * oldTotal, newTotal, -1 * oldNumbers, newNumbers, oldCategoryId, item.CategoryId);
         }
 
         public static void DeleteRecords(string selectedRowIds)
         {
             List<int> selectedIds = selectedRowIds.Split(',').ToList().ConvertAll(id => int.Parse(id));
             IEnumerable<Asset> assets = GetAssetsNotJoin().Where(i => selectedIds.Contains(i.Id));
+
+            decimal total = 0;
+            int numbers = 0;
+            foreach(Asset item in assets)
+            {
+                decimal addTotal = (decimal)((item.Amount == null || item.Quantity == null) ? 0 : item.Amount * item.Quantity);
+                total += addTotal;
+                int addNumbers = (int)((item.Quantity == null) ? 0 : item.Quantity);
+                numbers += addNumbers;
+                DataReportHelper.UpdateReportCategory(-1 * addTotal, -1 * addNumbers, item.CategoryId);
+            }
+
             db.Assets.RemoveRange(assets);
             db.SaveChanges();
+
+            DataReportHelper.UpdateReport(-1 * total, -1 * numbers);
         }
     }
 }
