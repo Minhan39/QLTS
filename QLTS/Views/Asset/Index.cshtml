@@ -10,6 +10,13 @@
     <script type="text/javascript" src="@Url.Content("~/Content/GridView.js")"></script>
 }
 
+<script>
+    function onPrintQr() {
+        var selectItem = gridView.GetSelectedKeysOnPage();
+        window.open(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/Asset/PrintQr?selectId=" + selectItem);
+    }
+</script>
+
 @section PageToolbar {
     @Html.DevExpress().Menu(menuSettings =>
 {
@@ -41,7 +48,7 @@
     });
     menuSettings.Items.Add(item =>
     {
-        item.Name = "QRCode";
+        item.Name = "Qr";
         item.Text = "Tạo QRCode";
         item.Alignment = MenuItemAlignment.Right;
         item.AdaptivePriority = 2;
@@ -88,7 +95,7 @@
         item.Image.Url = "~/Content/Images/search.svg";
         item.Image.UrlChecked = "~/Content/Images/search-selected.svg";
     });
-    menuSettings.ClientSideEvents.ItemClick = "onPageToolbarItemClick";
+    menuSettings.ClientSideEvents.ItemClick = "function(s,e){ if(e.item.name == 'Qr') {onPrintQr();} else {onPageToolbarItemClick(s,e);}}";
 }).GetHtml()
 
     @Html.DevExpress().Panel(panelSettings =>

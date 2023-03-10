@@ -2,6 +2,7 @@
 using QLTS.Models;
 using QLTS.Models.AssetModel;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace QLTS.Controllers
@@ -55,6 +56,12 @@ namespace QLTS.Controllers
         public ActionResult BinaryImageColumnPhotoUpdate()
         {
             return BinaryImageEditExtension.GetCallbackResult();
+        }
+
+        public ActionResult PrintQr(string selectId)
+        {
+            ViewBag.AssetId = selectId.Split(',').ToList();
+            return View();
         }
     }
 }

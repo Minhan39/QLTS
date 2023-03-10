@@ -36,6 +36,7 @@
                 break;
         }
     }
+
     function deleteSelectedRecords() {
         if(confirm('Confirm Delete?')) {
             gridView.GetSelectedFieldValues("Id", getSelectedFieldValuesCallback);
